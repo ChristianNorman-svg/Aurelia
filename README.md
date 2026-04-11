@@ -1,5 +1,5 @@
 Rose Among Locusts (Episode I)
-
+https://youtu.be/JU92S8wo2xs?si=Gc2eZU6dnQIOUI6C
 A grimdark visual novel set in the Warhammer 40,000 universe, chronicling the fall of an Imperial world and the transformation of an aristocrat into a survivor.
 
 🇺kr/UA: Опис проєкту
