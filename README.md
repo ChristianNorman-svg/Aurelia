@@ -13,7 +13,7 @@ A grimdark visual novel set in the Warhammer 40,000 universe, chronicling the fa
 🔗 Live Preview
 
 If you have GitHub Pages enabled, you can view the project here:
-https://<your-username>.github.io/<your-repository-name>/
+https://christiannorman-svg.github.io/Aurelia/
 
 🛠 Technical Details
 
@@ -45,7 +45,7 @@ This work is created strictly for non-commercial, fan-entertainment purposes. No
 
 👤 Credits
 
-Story & Design: [Your Name/Handle]
+Story & Design: [ChristianNorman]
 
 AI Consultation: Gemini (Google)
 
