@@ -23,6 +23,12 @@
             --blood-red: #8b0000;
             --gothic-black: #0a0a0a;
             --panel-bg: #0f0f0f;
+            
+            /* Psychological Colors inspired by VtM:B */
+            --logic-blue: #6ba6ff;
+            --dominance-red: #ff6b6b;
+            --manipulation-purple: #d4a3ff;
+            --neutral-white: #b0b0b0;
         }
 
         body {
@@ -94,21 +100,27 @@
 
         .monologue {
             font-style: italic;
-            color: #b0b0b0;
             font-size: 1rem;
             padding-left: 1rem;
-            border-left: 1px solid rgba(197, 160, 89, 0.2);
+            border-left: 2px solid;
             position: relative;
+            transition: color 0.5s ease;
         }
+
+        /* Specific classes for monologue types */
+        .m-logic { color: var(--logic-blue); border-left-color: var(--logic-blue); }
+        .m-dominance { color: var(--dominance-red); border-left-color: var(--dominance-red); }
+        .m-manipulation { color: var(--manipulation-purple); border-left-color: var(--manipulation-purple); }
+        .m-neutral { color: var(--neutral-white); border-left-color: var(--neutral-white); }
 
         .monologue::before {
             content: '"';
             position: absolute;
-            left: 0;
-            top: -5px;
-            color: var(--imperium-gold);
-            font-size: 2rem;
-            opacity: 0.3;
+            left: -10px;
+            top: -10px;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            font-family: 'Cinzel', serif;
         }
 
         .intro {
@@ -133,8 +145,9 @@
     <section class="intro">
         <h1 class="text-5xl md:text-7xl mb-4">Rose Among Locusts</h1>
         <h2 class="text-xl md:text-3xl italic tracking-widest text-[#8b0000]">Volume I: The Shadow Over Aurelia</h2>
-        <div class="mt-12 animate-pulse text-[#c5a059] text-xs tracking-widest uppercase">
-            Scroll to begin the chronicle
+        <div class="mt-12 animate-pulse text-[#c5a059] text-xs tracking-widest uppercase text-center">
+            Scroll to begin the chronicle<br>
+            <span class="text-[10px] opacity-50 mt-2 block">Colored text indicates psychological strategy</span>
         </div>
     </section>
 
@@ -145,10 +158,10 @@
             <div class="img-frame"><img src="18_53_28.png" alt="Questor Aurelia and the Governor"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    The halls of the High Administratum always carried a specific scent: ancient parchment dust, heavy incense, and aged amasec. Aurelia von Wald, a high-born <strong>Questor of the Imperial Tithe Assessment</strong>, had grown accustomed to this atmosphere. Her authority was not born of the sword, but of the quill and the seal. The aging Governor was merely a relic she had to tolerate until her time arrived.
+                    The halls of the High Administratum always carried a specific scent: ancient parchment dust, heavy incense, and aged amasec. Aurelia von Wald, a high-born <strong>Questor</strong>, watched the fading Governor through a veil of professional indifference.
                 </p>
-                <div class="monologue">
-                    He signs the edicts with a trembling hand, oblivious to the fact that I control the true flow of this world. I am the Questor; I see every grain of promethium and every drop of blood that leaves this planet for Holy Terra.
+                <div class="monologue m-logic">
+                    His fingers tremble as he signs the edicts. He is the past of this planet; I am its inevitable future. My blood grants me status, but my mind grants me control.
                 </div>
             </div>
         </article>
@@ -158,10 +171,10 @@
             <div class="img-frame"><img src="14_37_46.png" alt="Aurelia in the corridors"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    Aurelia's stride was the metronome to which the Spire lived. The sharp click of her boots against the marble echoed through the high vaulted ceilings, forcing minor clerks to press themselves against the walls as she passed. In this world, decor was as vital as a detonator.
+                    The sharp click of her boots against the marble echoed through the high vaulted ceilings, forcing minor clerks to press themselves against the walls as she passed.
                 </p>
-                <div class="monologue">
-                    One cannot simply possess power; one must demonstrate it with every rustle of a cloak. These soldiers are but furniture, framing my silhouette.
+                <div class="monologue m-dominance">
+                    These soldiers are but furniture, framing my silhouette. One cannot simply possess power; one must demonstrate it with every rustle of a cloak.
                 </div>
             </div>
         </article>
@@ -171,10 +184,10 @@
             <div class="img-frame"><img src="21_49_59.png" alt="Aurelia in the Lower Hive"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    Rare visits to the Lower Hive were a necessary evil. She looked at a soot-covered child without a shred of pity—only a professional curiosity about how humans could survive in such an all-encompassing stench.
+                    Rare visits to the Lower Hive were a necessary evil to keep the masses obedient. She offered them a practiced, cold smile.
                 </p>
-                <div class="monologue">
-                    Look at me, little creature. To you, I am a goddess descended from the Spire. This mercy costs me but a single smile, yet it buys another week without riots.
+                <div class="monologue m-manipulation">
+                    Remember this image, little creature. To you, I am a goddess descended from the Spire. This mercy costs me but a single smile, yet it buys another week without riots.
                 </div>
             </div>
         </article>
@@ -188,8 +201,8 @@
                 <p class="narrative-text">
                     Officer Kastiel was useful. She skillfully wove a web around the military command, using her charm as precisely as an executioner uses an axe.
                 </p>
-                <div class="monologue">
-                    He thinks we are partners. In truth, his devotion is a key I turn whenever it suits me. I need those orbital platform codes.
+                <div class="monologue m-manipulation">
+                    He thinks we are partners. In truth, his devotion is a key I turn whenever it suits me. I will have those orbital platform codes by tonight.
                 </div>
             </div>
         </article>
@@ -199,10 +212,10 @@
             <div class="img-frame"><img src="dream_nye9wiji657.jpg" alt="Commanding the regiments"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    For many, war was a tragedy; for Questor Aurelia, it was the highest form of logistics. Moving regiments, allocating resources, striking out names—it provided a sense of true, divine dominion.
+                    For many, war was a tragedy; for Questor Aurelia, it was the highest form of logistics. Moving regiments was like moving ink across a page.
                 </p>
-                <div class="monologue">
-                    I do not see people; I see resources. It is like assembling a puzzle where the pieces occasionally die, but the overall picture remains flawless.
+                <div class="monologue m-logic">
+                    I do not see people; I see resources. It is like assembling a puzzle where the pieces occasionally die, but the overall picture remains flawless. War is mathematics.
                 </div>
             </div>
         </article>
@@ -212,10 +225,10 @@
             <div class="img-frame"><img src="22_17_11.png" alt="Aurelia resting"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    Night brought a silence broken only by the crackle of candles and the low hum of servo-skulls. Aurelia allowed herself a brief moment of weakness—sleep at her desk amidst the paperwork.
+                    Night brought a silence broken only by the crackle of candles. Aurelia allowed herself a brief moment of sleep at her desk.
                 </p>
-                <div class="monologue">
-                    The stars are so quiet tonight. Another successful cycle. Nothing can disturb this harmony... or so I thought.
+                <div class="monologue m-neutral">
+                    The stars are so quiet tonight. Taxes collected, opposition suppressed. Nothing can disturb this harmony... or so I thought.
                 </div>
             </div>
         </article>
@@ -225,10 +238,10 @@
             <div class="img-frame"><img src="14_38_44.png" alt="Aurelia analyzing reports"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    The rot did not begin with a roar. As a Questor, Aurelia had known of their existence from the glaring discrepancies in the tithe records. Entire manufactorums fell silent, their labor output sinking into the void. She had documented these statistical anomalies through cold, hard numbers.
+                    The rot did not begin with a roar. As a Questor, Aurelia had known of their existence from the glaring discrepancies in the tithe records.
                 </p>
-                <div class="monologue" style="color: #d4a3ff; border-left-color: #d4a3ff;">
-                    I found them first in the ledgers—a shadow hidden in the math. Long before the first cultist drew a blade. Now, they have found me.
+                <div class="monologue m-logic">
+                    I found them first in the ledgers—a shadow hidden in the math. I tracked them through percentages and logistics... and now, it seems, they have tracked me.
                 </div>
             </div>
         </article>
@@ -238,24 +251,24 @@
             <div class="img-frame"><img src="07_00_18.png" alt="The Invasion begins"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    Then came the Shadow. Communication died, vox-channels filled with animalistic screeching. The sky of her world turned into a vortex of living flesh.
+                    The air suddenly turned sweet and sticky. Communication died. The sky of her world turned into a vortex of living flesh.
                 </p>
-                <div class="monologue">
-                    It is eating the sky. My order... my reports... none of it matters anymore. I will not be digested.
+                <div class="monologue m-dominance">
+                    It is eating the sky. My order... my reports... none of it matters anymore. But I will not be digested. I am a von Wald.
                 </div>
             </div>
         </article>
 
-        <!-- Panel: Farewell, dear prefect (JPG) -->
+        <!-- NEW PANEL: Farewell, dear prefect (JPG) -->
         <article class="panel">
             <div class="img-frame">
                 <img src="dream_akldwovl5kb.jpg" alt="The escape from the elevator">
             </div>
             <div class="text-block">
                 <p class="narrative-text">
-                    The elevator doors hissed open to a nightmare. The Administratum was already lost. The Prefect, her long-time mentor, stumbled as the pale claws reached out from the darkness.
+                    The elevator doors hissed open to a nightmare. The Prefect stumbled as the pale, four-armed shadows reached out from the dark.
                 </p>
-                <div class="monologue" style="color: #ff6b6b; border-left-color: #ff6b6b;">
+                <div class="monologue m-dominance">
                     He pleads for a hand I will not give. In the cold arithmetic of survival, a dead weight is a death sentence. His screams will provide the distraction I need. Farewell, dear prefect.
                 </div>
             </div>
@@ -266,10 +279,10 @@
             <div class="img-frame"><img src="dream_kfpuqcck5hk.jpg" alt="Escape through the ruins"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    Former elegance was forgotten. Aurelia clawed through the rubble, her luxurious garments reduced to rags. Chaos reigned as the high-born died in the jaws of Gargoyles.
+                    Aurelia clawed through the rubble, her luxurious garments reduced to rags. High-born and low-born alike died in the jaws of the swarm.
                 </p>
-                <div class="monologue">
-                    Run. Do not look back. Kastiel is likely dead. All that matters is that I am still breathing. I will find a way out.
+                <div class="monologue m-logic">
+                    Run. Do not look back. Kastiel is dead weight now. All that matters is that I am still breathing. I will find a way out. I always do.
                 </div>
             </div>
         </article>
@@ -279,10 +292,10 @@
             <div class="img-frame"><img src="22_53_25.png" alt="Aurelia kills a Tyranid"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    The dagger sank deep into the soft flesh between chitinous plates. Green ichor splattered her face, burning her skin, but she only gripped the hilt tighter.
+                    The dagger that was once a mere ornament sank deep into chitinous flesh. Green ichor splattered her face, burning her skin.
                 </p>
-                <div class="monologue">
-                    You thought I was but a fragile flower? I am Aurelia von Wald, and I claim your life to save my own!
+                <div class="monologue m-dominance">
+                    You thought I was but a fragile flower? Taste this, abomination! I claim your life to save my own!
                 </div>
             </div>
         </article>
@@ -292,10 +305,10 @@
             <div class="img-frame"><img src="06_46_41.png" alt="Final Stand"></div>
             <div class="text-block">
                 <p class="narrative-text">
-                    The city burned. Promethium fires illuminated the silhouettes of Tyranid bio-ships. Questor Aurelia stood amidst the ashes, clutching a pistol. She had lost her title, but she kept her will.
+                    The city burned. Questor Aurelia stood amidst the ashes, clutching a pistol. She had lost her title, but she kept her will.
                 </p>
-                <div class="monologue">
-                    Somewhere beyond the smoke, the shuttles are still waiting. I will escape. The Rose didn't wither... it was tempered in fire.
+                <div class="monologue m-dominance">
+                    The planet is doomed, but I am not. The Rose didn't wither... it was tempered in fire.
                 </div>
             </div>
         </article>
@@ -310,7 +323,7 @@
                 <p>&copy; 2026. "Rose Among Locusts" is a fan-made project. Licensed under CC BY-NC-ND 4.0.</p>
                 <p class="uppercase tracking-widest text-[10px] opacity-60">Legal Disclaimer</p>
                 <p class="italic leading-relaxed text-left text-[10px]">
-                    This project is completely unofficial and in no way endorsed by Games Workshop Limited. All associated marks from the Warhammer 40,000 universe are either ®, TM and/or © Games Workshop Ltd.
+                    This project is unofficial and not endorsed by Games Workshop Ltd. All associated marks from the Warhammer 40,000 universe are either ®, TM and/or © Games Workshop Ltd.
                 </p>
             </div>
         </footer>
