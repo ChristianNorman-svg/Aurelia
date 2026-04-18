@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta property="og:title" content="Rose Among Locusts - Warhammer 40k Visual Novel">
-    <meta property="og:description" content="Witness the fall of Questor Aurelia. A high-gothic tale of eloquence, betrayal, and survival against the Tyranid Hive Fleet.">
-    <meta property="og:image" content="https://christiannorman-svg.github.io/Aurelia/06_46_41.png">
-    <meta property="og:url" content="https://christiannorman-svg.github.io/Aurelia/">
+    <meta property="og:title" content="Rose Among Locusts - The Complete Audit">
+    <meta property="og:description" content="Witness the fall of Questor Aurelia and her escape from Aegis-Tertius.">
     <meta name="twitter:card" content="summary_large_image">
     
-    <title>Rose Among Locusts - Episode I</title>
+    <title>Rose Among Locusts - Visual Novel</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -47,10 +45,46 @@
             text-align: center;
         }
 
+        /* Навігація */
+        .episode-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            z-index: 100;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-link {
+            color: var(--imperium-gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            outline: none;
+        }
+        .nav-link:hover:not(.disabled) {
+            color: var(--las-red);
+        }
+        .nav-link.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
         .comic-wrapper {
             max-width: 850px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 60px 20px 0 20px;
         }
 
         .panel {
@@ -104,6 +138,7 @@
             border-left: 2px solid;
             position: relative;
             transition: color 0.5s ease;
+            margin-bottom: 1rem;
         }
 
         .m-logic { color: var(--logic-blue); border-left-color: var(--logic-blue); }
@@ -136,279 +171,462 @@
             margin: 4rem 0;
             opacity: 0.3;
         }
+
+        .episode-container {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .episode-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
-    <section class="intro">
-        <h1 class="text-5xl md:text-7xl mb-4">Rose Among Locusts</h1>
-        <h2 class="text-xl md:text-3xl italic tracking-widest text-[#8b0000]">Volume I: The Shadow Over Aurelia</h2>
-        <div class="mt-12 animate-pulse text-[#c5a059] text-xs tracking-widest uppercase text-center">
-            Scroll to begin the chronicle<br>
-            <span class="text-[10px] opacity-50 mt-2 block">Colored text indicates psychological strategy</span>
+    <div id="episode1" class="episode-container active">
+        
+        <nav class="episode-nav">
+            <span class="nav-link disabled">Volume I: The Shadow Over Aurelia</span>
+            <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+            <button class="nav-link" onclick="switchEpisode('episode2')">Volume II: Orbital Decay &rarr;</button>
+        </nav>
+
+        <section class="intro">
+            <h1 class="text-5xl md:text-7xl mb-4">Rose Among Locusts</h1>
+            <h2 class="text-xl md:text-3xl italic tracking-widest text-[#8b0000]">Volume I: The Shadow Over Aurelia</h2>
+            <div class="mt-12 animate-pulse text-[#c5a059] text-xs tracking-widest uppercase text-center">
+                Scroll to begin the chronicle<br>
+                <span class="text-[10px] opacity-50 mt-2 block">Colored text indicates psychological strategy</span>
+            </div>
+        </section>
+
+        <div class="comic-wrapper">
+            <article class="panel">
+                <div class="img-frame"><img src="18_53_28.png" alt="Questor Aurelia and the Governor" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+1'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The High Administratum was a sanctuary of monumental order. Aurelia von Wald, a <strong>Questor</strong> of refined lineage, observed the Governor—a crumbling monument to a redundant past. Her gaze was not one of loyalty, but of a predator measuring the decay of its predecessor.
+                    </p>
+                    <div class="monologue m-logic">
+                        He is a footnote in the history I am currently writing. His decay is but the fertilizer for my ascent. I ensure the Golden Throne's heavy gears remain oiled with the precision of my audit, for order is my only true religion.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_37_46.png" alt="Aurelia in the corridors" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+2'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Her stride carried the weight of Imperial Law. The air itself seemed to part before her, a silent concession to a woman who viewed the vast machinery of the Hive as her personal estate. Beauty, she knew, was the most effective armor against the mundane.
+                    </p>
+                    <div class="monologue m-dominance">
+                        Authority is a performance; without the grand costume of power, the audience eventually forgets their lines. These soldiers are my stagehands—necessary shadows meant to accentuate my silhouette.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="21_49_59.png" alt="Aurelia in the Lower Hive" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+3'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The descent into the Lower Hive was a chore, a pilgrimage to a world of soot. She offered the masses a smile as polished and cold as a saint's relic, an icon of distant salvation. Her grace was a commodity, traded for the stability of the tithe.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        Look closely, little creature. I am the divinity you pray to in the dark. This smile is a trivial expenditure, yet it buys another week of silence in the gutters. In this filth, I am the only petal that remains unbruised.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_20.png" alt="Aurelia preparing for her meeting" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+4'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The office was quiet, the heavy scent of incense blending with the expensive musk of her perfume. She tightened the laces of her boots with deliberate care, her mind shifting toward the evening's true business. Her crimson uniform was more than cloth; it was her petals, forged in the hue of a las-beam. Kastiel was a man of discipline, and breaking that discipline was a game she intended to enjoy.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        Kastiel... his rigidity is as predictable as the planetary rotation, yet there is a certain aesthetic pleasure in bending it. A delightful evening is ahead, and if it ends with the codes I require, then the audit of my time will be perfectly balanced.
+                    </div>
+                </div>
+            </article>
+
+            <div class="divider"></div>
+
+            <article class="panel">
+                <div class="img-frame"><img src="21_38_17.png" alt="Aurelia and the officer" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+5'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Officer Kastiel was a man of steel and duty. Aurelia wove her web with the grace of a sculptor, turning his devotion into a bridge for her own ambitions. She wielded her vanity like a blade, knowing exactly where to strike a man's pride.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        He believes in the nobility of our partnership. How charming. In truth, I only require the keys to the orbital platforms. His heart is a lock, and I have always been an expert locksmith.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="dream_nye9wiji657.jpg" alt="Commanding the regiments" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+6'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        For Aurelia, war was the ultimate manifestation of logistics—a symphony where the notes were regiments and the crescendo was the absolute control of resources. She stood as a master conductor over a theatre of professional destruction.
+                    </p>
+                    <div class="monologue m-logic">
+                        Individual lives are but ink on a ledger. If ten thousand must fall to secure a single supply line, it is a balanced account. Mathematics does not possess the capacity for grief, and neither do I.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="22_17_11.png" alt="Aurelia resting" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+7'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Night brought a fragile peace. Amidst the flickering candles, the Questor allowed herself a moment of repose. The world felt eternal, anchored by her will and the cold certainty of her station.
+                    </p>
+                    <div class="monologue m-neutral">
+                        The accounts are settled. The stars remain silent observers to my victory. I assumed this harmony was my birthright... a rare error in my calculations.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_44.png" alt="Aurelia analyzing reports" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+8'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The rot did not begin with a roar, but with a betrayal of logic. In the cold geometry of the tithe records, Aurelia found shadows that should not exist. Her professionalism was her salvation; she saw the doom in the numbers before it spoke in screams.
+                    </p>
+                    <div class="monologue m-logic">
+                        I tracked the insurgency through the beauty of the numbers. I saw the hollow souls in the ledgers long before the first cultist drew a blade. Now, the math has come alive to haunt me.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="07_00_18.png" alt="The Invasion begins" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+9'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Then came the Shadow—a psychic void that choked the vox-channels. The sky turned into a vortex of living hunger. Aurelia watched as the Hive's vanity was stripped away, leaving only the raw terror of the biomass.
+                    </p>
+                    <div class="monologue m-dominance">
+                        This xenos filth seeks to liquidate the Administratum’s assets. I am the highest asset on this world, and I will not be consumed by a mindless swarm. My will is the only thing they cannot digest.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="dream_akldwovl5kb.jpg" alt="The escape from the elevator" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+10'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The elevator doors hissed open to a nightmare. The Prefect, her mentor, stumbled as the pale claws of the cultists reached from the gloom. In that moment, her opportunistic heart calculated his survival cost and found it too high.
+                    </p>
+                    <div class="monologue m-logic">
+                        His final duty to the Throne is to serve as a biological diversion. His screams are a tactical asset, granting me the seconds I need. His end is a masterpiece of utility. Farewell, dear prefect.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_18.png" alt="Aurelia escaping through a window" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+11'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        She shattered the ornate transparisteel and leapt. Behind her, the cultists pursued with animalistic fervor. They sought not her death, but her lineage, craving to poison her noble blood.
+                    </p>
+                    <div class="monologue m-dominance">
+                        They seek an unauthorized alteration of my genes. I would rather shatter on the ferrocrete below than become a vessel for their brood. A von Wald chooses her own end.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="dream_kfpuqcck5hk.jpg" alt="Escape through the ruins" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+12'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Former elegance was ground into the dust. Aurelia clawed through the rubble, moving through the labyrinth of ruins where aristocrats and beggars were finally made equal. She held onto her pride like a dagger, refused to be humbled by the wreckage.
+                    </p>
+                    <div class="monologue m-logic">
+                        Sentiment is a defect I cannot afford. Kastiel’s death was merely the fulfillment of his contract. I remain the only relevant variable in this equation. I will find a way out.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="22_53_25.png" alt="Aurelia kills a Tyranid" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+13'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The dagger sank deep into chitinous flesh. Green ichor splattered her face, a burning baptism. Вона не кричала; вона завдавала удару з точністю аудитора, очищуючи світ від біологічних помилок.
+                    </p>
+                    <div class="monologue m-dominance">
+                        You dare attempt to harvest a von Wald? Taste the sting of a rose that refuses to wither. I claim your life to buy my own!
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="06_46_41.png" alt="Final Stand" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+14'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Questor Aurelia stood amidst the ashes, her title gone, but her will forged into a blade of pure ambition. The audit was over, and the balance was settled in blood. The Rose was tempered in fire... and its petals now burn with the crimson of a las-beam.
+                    </p>
+                    <div class="monologue m-dominance">
+                        The planet’s accounts are closed. I am the sole survivor of the wreckage. My journey among the stars has only just begun. I have shed the girl, and the Questor remains—sharpened and absolute.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_19.png" alt="Boots amidst tyranid larvae" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+15'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        She paused for a moment to catch her breath. Her boots, symbols of former majesty, now sank into a carpet of greasy Tyranid larvae. The planet's atmosphere was doomed. Но в очах Аурелії не було розпачу — лише залізна шипи її волі.
+                    </p>
+                    <div class="monologue m-dominance">
+                        This planet no longer belongs to the Imperium. But I will not be their supper. My roots are iron, my petals are blades. The hangars lie ahead. Ahead lies my exit.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_21.png" alt="Aurelia arrives at the hangar bay" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+16'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Salvation materialized: an aging Arvus Lighter. Beside it stood a lone pilot. He saw a Questor in need of rescue; she saw a technical necessity that needed to be secured. He was a variable she could not afford to leave unmanaged. Her beauty, though ragged, remained a tool of authority.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        Hope is a powerful sedative. I will let him believe in our shared escape just long enough to unlock the cogitator spirits. I need him focused on the machine, not on me. His hands are skilled, but mine must be the ones on the controls.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="14_38_23.png" alt="Aurelia neutralizes the risk" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+17'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        He had performed his duties flawlessly. As he turned to offer her a hand up the ramp—a final gesture of camaraderie—Aurelia’s response was a single, calculated shot. It was a clinical removal of an obstacle. She did not check if the beam was fatal; she merely ensured he міг більше не стояти на її шляху.
+                    </p>
+                    <div class="monologue m-dominance">
+                        Dependency is a debt I refuse to carry. You were efficient, pilot, but a partner is just a liability. I do not kill you for spite; I neutralize you for my own certainty. The audit of this world is complete. I am the only one moving on to the next ledger.
+                    </div>
+                </div>
+            </article>
+
+            <div class="py-32 text-center">
+                <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">Кінець I Тома</h3>
+                <button class="mt-8 px-6 py-3 border border-[#c5a059] text-[#c5a059] font-[Cinzel] uppercase tracking-widest hover:bg-[#c5a059] hover:text-black transition-colors" onclick="switchEpisode('episode2')">
+                    Перейти до II Тома
+                </button>
+            </div>
         </div>
-    </section>
-
-    <div class="comic-wrapper">
-
-        <!-- Panel 1 -->
-        <article class="panel">
-            <div class="img-frame"><img src="18_53_28.png" alt="Questor Aurelia and the Governor"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The High Administratum was a sanctuary of monumental order. Aurelia von Wald, a <strong>Questor</strong> of refined lineage, observed the Governor—a crumbling monument to a redundant past. Her gaze was not one of loyalty, but of a predator measuring the decay of its predecessor.
-                </p>
-                <div class="monologue m-logic">
-                    He is a footnote in the history I am currently writing. His decay is but the fertilizer for my ascent. I ensure the Golden Throne's heavy gears remain oiled with the precision of my audit, for order is my only true religion.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 2 -->
-        <article class="panel">
-            <div class="img-frame"><img src="14_37_46.png" alt="Aurelia in the corridors"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Her stride carried the weight of Imperial Law. The air itself seemed to part before her, a silent concession to a woman who viewed the vast machinery of the Hive as her personal estate. Beauty, she knew, was the most effective armor against the mundane.
-                </p>
-                <div class="monologue m-dominance">
-                    Authority is a performance; without the grand costume of power, the audience eventually forgets their lines. These soldiers are my stagehands—necessary shadows meant to accentuate my silhouette.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 3 -->
-        <article class="panel">
-            <div class="img-frame"><img src="21_49_59.png" alt="Aurelia in the Lower Hive"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The descent into the Lower Hive was a chore, a pilgrimage to a world of soot. She offered the masses a smile as polished and cold as a saint's relic, an icon of distant salvation. Her grace was a commodity, traded for the stability of the tithe.
-                </p>
-                <div class="monologue m-manipulation">
-                    Look closely, little creature. I am the divinity you pray to in the dark. This smile is a trivial expenditure, yet it buys another week of silence in the gutters. In this filth, I am the only petal that remains unbruised.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 4: The Preparation -->
-        <article class="panel">
-            <div class="img-frame"><img src="14_38_20.png" alt="Aurelia preparing for her meeting"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The office was quiet, the heavy scent of incense blending with the expensive musk of her perfume. She tightened the laces of her boots with deliberate care, her mind shifting toward the evening's true business. Her crimson uniform was more than cloth; it was her petals, forged in the hue of a las-beam. Kastiel was a man of discipline, and breaking that discipline was a game she intended to enjoy.
-                </p>
-                <div class="monologue m-manipulation">
-                    Kastiel... his rigidity is as predictable as the planetary rotation, yet there is a certain aesthetic pleasure in bending it. A delightful evening is ahead, and if it ends with the codes I require, then the audit of my time will be perfectly balanced.
-                </div>
-            </div>
-        </article>
-
-        <div class="divider"></div>
-
-        <!-- Panel 5 -->
-        <article class="panel">
-            <div class="img-frame"><img src="21_38_17.png" alt="Aurelia and the officer"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Officer Kastiel was a man of steel and duty. Aurelia wove her web with the grace of a sculptor, turning his devotion into a bridge for her own ambitions. She wielded her vanity like a blade, knowing exactly where to strike a man's pride.
-                </p>
-                <div class="monologue m-manipulation">
-                    He believes in the nobility of our partnership. How charming. In truth, I only require the keys to the orbital platforms. His heart is a lock, and I have always been an expert locksmith.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 6 -->
-        <article class="panel">
-            <div class="img-frame"><img src="dream_nye9wiji657.jpg" alt="Commanding the regiments"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    For Aurelia, war was the ultimate manifestation of logistics—a symphony where the notes were regiments and the crescendo was the absolute control of resources. She stood as a master conductor over a theatre of professional destruction.
-                </p>
-                <div class="monologue m-logic">
-                    Individual lives are but ink on a ledger. If ten thousand must fall to secure a single supply line, it is a balanced account. Mathematics does not possess the capacity for grief, and neither do I.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 7 -->
-        <article class="panel">
-            <div class="img-frame"><img src="22_17_11.png" alt="Aurelia resting"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Night brought a fragile peace. Amidst the flickering candles, the Questor allowed herself a moment of repose. The world felt eternal, anchored by her will and the cold certainty of her station.
-                </p>
-                <div class="monologue m-neutral">
-                    The accounts are settled. The stars remain silent observers to my victory. I assumed this harmony was my birthright... a rare error in my calculations.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 8 -->
-        <article class="panel">
-            <div class="img-frame"><img src="14_38_44.png" alt="Aurelia analyzing reports"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The rot did not begin with a roar, but with a betrayal of logic. In the cold geometry of the tithe records, Aurelia found shadows that should not exist. Her professionalism was her salvation; she saw the doom in the numbers before it spoke in screams.
-                </p>
-                <div class="monologue m-logic">
-                    I tracked the insurgency through the beauty of the numbers. I saw the hollow souls in the ledgers long before the first cultist drew a blade. Now, the math has come alive to haunt me.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 9 -->
-        <article class="panel">
-            <div class="img-frame"><img src="07_00_18.png" alt="The Invasion begins"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Then came the Shadow—a psychic void that choked the vox-channels. The sky turned into a vortex of living hunger. Aurelia watched as the Hive's vanity was stripped away, leaving only the raw terror of the biomass.
-                </p>
-                <div class="monologue m-dominance">
-                    This xenos filth seeks to liquidate the Administratum’s assets. I am the highest asset on this world, and I will not be consumed by a mindless swarm. My will is the only thing they cannot digest.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 10 -->
-        <article class="panel">
-            <div class="img-frame">
-                <img src="dream_akldwovl5kb.jpg" alt="The escape from the elevator">
-            </div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The elevator doors hissed open to a nightmare. The Prefect, her mentor, stumbled as the pale claws of the cultists reached from the gloom. In that moment, her opportunistic heart calculated his survival cost and found it too high.
-                </p>
-                <div class="monologue m-logic">
-                    His final duty to the Throne is to serve as a biological diversion. His screams are a tactical asset, granting me the seconds I need. His end is a masterpiece of utility. Farewell, dear prefect.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 11 -->
-        <article class="panel">
-            <div class="img-frame">
-                <img src="14_38_18.png" alt="Aurelia escaping through a window">
-            </div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    She shattered the ornate transparisteel and leapt. Behind her, the cultists pursued with animalistic fervor. They sought not her death, but her lineage, craving to poison her noble blood.
-                </p>
-                <div class="monologue m-dominance">
-                    They seek an unauthorized alteration of my genes. I would rather shatter on the ferrocrete below ніж стати інкубатором для їхнього поріддя. A von Wald chooses her own end.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 12 -->
-        <article class="panel">
-            <div class="img-frame"><img src="dream_kfpuqcck5hk.jpg" alt="Escape through the ruins"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Former elegance was ground into the dust. Aurelia clawed through the rubble, moving through the labyrinth of ruins where aristocrats and beggars were finally made equal. She held onto her pride like a dagger, refused to be humbled by the wreckage.
-                </p>
-                <div class="monologue m-logic">
-                    Sentiment is a defect I cannot afford. Kastiel’s death was merely the fulfillment of his contract. I remain the only relevant variable in this equation. I will find a way out.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 13 -->
-        <article class="panel">
-            <div class="img-frame"><img src="22_53_25.png" alt="Aurelia kills a Tyranid"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    The dagger sank deep into chitinous flesh. Green ichor splattered her face, a burning baptism. Вона не кричала; вона завдавала удару з точністю аудитора, чистячи світ від помилок у плоті.
-                </p>
-                <div class="monologue m-dominance">
-                    You dare attempt to harvest a von Wald? Taste the sting of a rose that refuses to wither. I claim your life to buy my own!
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 14 -->
-        <article class="panel">
-            <div class="img-frame"><img src="06_46_41.png" alt="Final Stand"></div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Questor Aurelia stood amidst the ashes, her title gone, but her will forged into a blade of pure ambition. The audit was over, and the balance was settled in blood. The Rose was tempered in fire... and its petals now burn with the crimson of a las-beam.
-                </p>
-                <div class="monologue m-dominance">
-                    The planet’s accounts are closed. I am the sole survivor of the wreckage. My journey among the stars has only just begun. I have shed the girl, and the Questor remains—sharpened and absolute.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 15 -->
-        <article class="panel">
-            <div class="img-frame">
-                <img src="14_38_19.png" alt="Boots amidst tyranid larvae">
-            </div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    She paused for a moment to catch her breath. Her boots, symbols of former majesty, now sank into a carpet of greasy Tyranid larvae. The planet's atmosphere was doomed. Но в очах Аурелії не було розпачу — лише залізна шипи її волі.
-                </p>
-                <div class="monologue m-dominance">
-                    This planet no longer belongs to the Imperium. But I will not be their supper. My roots are iron, my petals are blades. The hangars lie ahead. Ahead lies my exit.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 16 -->
-        <article class="panel">
-            <div class="img-frame">
-                <img src="14_38_21.png" alt="Aurelia arrives at the hangar bay">
-            </div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    Salvation materialized: an aging Arvus Lighter. Beside it stood a lone pilot. He saw a Questor in need of rescue; she saw a technical necessity that needed to be secured. He was a variable she could not afford to leave unmanaged. Her beauty, though ragged, remained a tool of authority.
-                </p>
-                <div class="monologue m-manipulation">
-                    Hope is a powerful sedative. I will let him believe in our shared escape just long enough to unlock the cogitator spirits. I need him focused on the machine, not on me. His hands are skilled, but mine must be the ones on the controls.
-                </div>
-            </div>
-        </article>
-
-        <!-- Panel 17 -->
-        <article class="panel">
-            <div class="img-frame">
-                <img src="14_38_23.png" alt="Aurelia neutralizes the risk">
-            </div>
-            <div class="text-block">
-                <p class="narrative-text">
-                    He had performed his duties flawlessly. As he turned to offer her a hand up the ramp—a final gesture of camaraderie—Aurelia’s response was a single, calculated shot. It was a clinical removal of an obstacle. She did not check if the beam was fatal; she merely ensured he could no longer stand in her way.
-                </p>
-                <div class="monologue m-dominance">
-                    Dependency is a debt I refuse to carry. You were efficient, pilot, but a partner is just a liability. I do not kill you for spite; I neutralize you for my own certainty. The audit of this world is complete. I am the only one moving on to the next ledger.
-                </div>
-            </div>
-        </article>
-
-        <div class="py-32 text-center">
-            <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">End of Episode I</h3>
-            <p class="text-gray-500 mt-6 italic font-[EB Garamond]">Aurelia von Wald will return...</p>
-        </div>
-
-        <footer class="mt-20 py-12 border-t border-gray-800 bg-black text-gray-500 text-xs text-center px-4">
-            <div class="max-w-3xl mx-auto space-y-4">
-                <div class="flex justify-center mb-4">
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-                        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" class="opacity-50 hover:opacity-100 transition-opacity" />
-                    </a>
-                </div>
-                <p>&copy; 2026. "Rose Among Locusts" is a fan-made project. Licensed under CC BY-NC-ND 4.0.</p>
-                <p class="uppercase tracking-widest text-[10px] opacity-60">Legal Disclaimer</p>
-                <p class="italic text-[10px]">
-                    This project is unofficial and not endorsed by Games Workshop Ltd. All associated marks from the Warhammer 40,000 universe are either ®, TM and/or © Games Workshop Ltd.
-                </p>
-            </div>
-        </footer>
-
     </div>
+
+    <div id="episode2" class="episode-container">
+        
+        <nav class="episode-nav">
+            <button class="nav-link" onclick="switchEpisode('episode1')">&larr; Volume I: The Shadow Over Aurelia</button>
+            <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+            <span class="nav-link disabled">Volume III (Sealed)</span>
+        </nav>
+
+        <section class="intro">
+            <h1 class="text-5xl md:text-7xl mb-4">Rose Among Locusts</h1>
+            <h2 class="text-xl md:text-3xl italic tracking-widest text-[#8b0000]">Volume II: Orbital Decay</h2>
+            <div class="mt-12 animate-pulse text-[#c5a059] text-xs tracking-widest uppercase text-center">
+                Scroll to descend into the madness<br>
+                <span class="text-[10px] opacity-50 mt-2 block">Colored text indicates psychological strategy</span>
+            </div>
+        </section>
+
+        <div class="comic-wrapper">
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel1.png" alt="Aegis-Tertius Orbital Station" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+1'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The Arvus Lighter breached the docking shields of Aegis-Tertius. Below, the planetary crust was already dissolving under the biological acid of the Tyranid swarm. The orbital station was a bleeding wound in the void, torn between the zealous desire to burn with the world and the cowardly instinct to flee.
+                    </p>
+                    <div class="monologue m-logic">
+                        The station’s command structure has hermetically sealed itself, issuing suicidal mandates of 'no retreat.' The lower decks are swarming with deserters seeking any vessel out. Neither extreme is mathematically viable for my survival.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel2.png" alt="Viewing the Light Cruiser" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+2'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Clamped to the primary spire, untouched by the rabble, sat the Imperial Light Cruiser Spear of Reason. A luxurious, warp-capable asset. It was the only acceptable vessel for a Questor of her lineage. To reach it, however, required the docking clearance codes held by Captain Castiel.
+                    </p>
+                    <div class="monologue m-neutral">
+                        Castiel. The beautiful, stammering officer I cultivated on the surface. He is here, somewhere in this steel tomb.
+                    </div>
+                    <div class="monologue m-dominance">
+                        I must extract him. But I will absolutely not soil my boots by pushing through a mob of terrified infantry to do it. The rabble will part for me, or they will be liquidated.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel3.png" alt="Chaos in the Hangar" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+3'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The landing ramp lowered into pandemonium. The primary hangar was choked with deserters and broken ratings. Discipline had evaporated. To petition the isolated station command for a retreat was political suicide. To flee alongside this feral mob was an insult to her blood.
+                    </p>
+                    <div class="monologue m-logic">
+                        To show weakness here is to become prey. They are a powder keg of terror. If I act like a refugee, I will be trampled. If I act like a commander, I become a target for their frustration. I must act as something beyond both.
+                    </div>
+                </div>
+            </article>
+
+            <div class="divider"></div>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel4.png" alt="Aurelia giving orders" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+4'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Aurelia did not cower. She strode down the ramp, her crimson uniform a beacon of terrifying order amidst the grime. Вона не просила проходу — вона вимагала покори.
+                    </p>
+                    <div class="monologue m-dominance">
+                        Form ranks! You are assets of the Golden Throne, not frightened livestock! Man the defensive turrets and clear the primary thoroughfare! The Emperor’s Audit is upon you!
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel5.png" alt="The Mutineer" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+5'"></div>
+                <div class="text-block">
+                    <p class="narrative-text italic text-gray-400 border-l-2 border-gray-600 pl-4 my-4">
+                        "Listen to this governor’s whore!" a scarred corporal spat. "She thinks her title means something while the bugs eat the hull! Let's spill her blue blood!"
+                    </p>
+                    <div class="monologue m-logic">
+                        A predictable, primitive variable. He attempts to weaponize his despair. He is catastrophically mistaken. I am the master of loss.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel6.png" alt="The Administratum Rosette" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+6'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Aurelia slowly raised her Administratum Rosette. The heavy auramite seal pulsed with a harsh light.
+                    </p>
+                    <div class="monologue m-dominance">
+                        Stop my heart, and the encryption master-key scrambles permanently. If I die, the Spear of Reason locks its bulkheads forever. The docking clamps fuse.
+                    </div>
+                    <div class="monologue m-logic">
+                        Shoot me, and you ensure every single soul in this hangar becomes biomass.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel7.png" alt="Aurelia manipulates the mob" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+7'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Aurelia drove a wedge of poisoned honey into their terror.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        My duty as Questor is to preserve the Emperor's assets. That includes your ungrateful lives. Station Command wants you to die in the dark. I am the only authority here organizing a sanctioned evacuation.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel8.png" alt="Aurelia walking through the mob" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+8'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The mob parted, clearing a path toward the command sector.
+                    </p>
+                    <div class="monologue m-manipulation">
+                        They swallow the hook because they are starving for hope. They will guard my back now.
+                    </div>
+                    <div class="monologue m-logic">
+                        Now, I must extract Captain Castiel. The board is clear.
+                    </div>
+                </div>
+            </article>
+
+            <div class="divider"></div>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel9.png" alt="Captain Castiel hesitating" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+9'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        She found Castiel near the airlocks. "Station Command... the Lord Admiral declared a no-retreat doctrine, my Lady," he stammered.
+                    </p>
+                    <div class="monologue m-logic">
+                        If he breaks entirely, the codes are lost. I must dismantle his resistance without breaking the instrument itself.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel10.png" alt="Aurelia manipulating Castiel" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+10'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        She stepped close, her gloved hand gently cupping his cheek. "Castiel," she whispered. "The Emperor does not demand the senseless waste of a mind like yours. We are leaving to fight another day. Do you trust me?"
+                    </p>
+                    <div class="monologue m-manipulation">
+                        Wrap the leash in velvet. He will save my life believing he is saving his own soul.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel11.png" alt="The Cruiser departing" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+11'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        The Spear of Reason hummed to life, severing the docking clamps as Tyranid spores punctured the station.
+                    </p>
+                    <div class="monologue m-dominance">
+                        The key has turned. Let him play the captain for the broken crew; he requires the distraction. A Questor does not engage in the manual labor of piloting.
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="img-frame"><img src="ep2_panel12.png" alt="Aurelia in the Captain's Cabin" onerror="this.src='https://placehold.co/800x400/111/444?text=Ep+2+Panel+12'"></div>
+                <div class="text-block">
+                    <p class="narrative-text">
+                        Aurelia retired to the captain's cabin, far removed from the screams. She gazes out the viewport as the Hive Fleet consumes the world.
+                    </p>
+                    <div class="monologue m-neutral">
+                        It is a pity. The orbital galas were well-catered, and Castiel was quite charming before the fear ruined his posture. 
+                    </div>
+                    <div class="monologue m-logic">
+                        But sentiment is a poor investment. The planet is written off. My survival is secured, and my ledger is perfectly balanced. 
+                    </div>
+                </div>
+            </article>
+
+            <div class="py-32 text-center">
+                <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">Аудит завершено</h3>
+                <p class="text-gray-500 mt-6 italic font-[EB Garamond]">Том II завершено. Історія Аурелії фон Вальд досягла свого логічного фіналу.</p>
+                <button class="mt-8 px-6 py-3 border border-gray-600 text-gray-500 font-[Cinzel] uppercase tracking-widest hover:border-[#c5a059] hover:text-[#c5a059] transition-colors" onclick="switchEpisode('episode1')">
+                    Повернутися до I Тома
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-12 border-t border-gray-800 bg-black text-gray-500 text-xs text-center px-4 relative z-50">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <div class="flex justify-center mb-4">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" class="opacity-50 hover:opacity-100 transition-opacity" />
+                </a>
+            </div>
+            <p>&copy; 2026. "Rose Among Locusts" is a fan-made project. Licensed under CC BY-NC-ND 4.0.</p>
+            <p class="uppercase tracking-widest text-[10px] opacity-60">Legal Disclaimer</p>
+            <p class="italic text-[10px]">
+                This project is unofficial and not endorsed by Games Workshop Ltd. All associated marks from the Warhammer 40,000 universe are either ®, TM and/or © Games Workshop Ltd.
+            </p>
+        </div>
+    </footer>
 
     <script>
         const observerOptions = { threshold: 0.15 };
-        const observer = new IntersectionObserver((entries) => {
+        let observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -416,7 +634,28 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.panel').forEach(p => observer.observe(p));
+        function setupObserver() {
+            observer.disconnect();
+            const activeEpisode = document.querySelector('.episode-container.active');
+            if (activeEpisode) {
+                const panels = activeEpisode.querySelectorAll('.panel');
+                panels.forEach(p => {
+                    p.classList.remove('visible'); 
+                    observer.observe(p);
+                });
+            }
+        }
+
+        function switchEpisode(episodeId) {
+            document.querySelectorAll('.episode-container').forEach(ep => {
+                ep.classList.remove('active');
+            });
+            document.getElementById(episodeId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setupObserver();
+        }
+
+        document.addEventListener('DOMContentLoaded', setupObserver);
     </script>
 </body>
 </html>
