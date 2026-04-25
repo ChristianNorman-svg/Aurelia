@@ -416,7 +416,7 @@
                 <div class="img-frame"><img src="14_38_19.png" alt="Boots amidst tyranid larvae" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+15'"></div>
                 <div class="text-block">
                     <p class="narrative-text">
-                        She paused for a moment to catch her breath. Her boots, symbols of former majesty, now sank into a carpet of greasy Tyranid larvae. The planet's atmosphere was doomed. Но в очах Аурелії не було розпачу — лише залізна шипи її волі.
+                        She paused for a moment to catch her breath. Her boots, symbols of former majesty, now sank into a carpet of greasy Tyranid larvae. The planet's atmosphere was doomed. But there was no despair in Aurelia's eyes—only the iron spikes of her will.
                     </p>
                     <div class="monologue m-dominance">
                         This planet no longer belongs to the Imperium. But I will not be their supper. My roots are iron, my petals are blades. The hangars lie ahead. Ahead lies my exit.
@@ -440,7 +440,7 @@
                 <div class="img-frame"><img src="14_38_23.png" alt="Aurelia neutralizes the risk" onerror="this.src='https://placehold.co/800x400/111/444?text=Panel+17'"></div>
                 <div class="text-block">
                     <p class="narrative-text">
-                        He had performed his duties flawlessly. As he turned to offer her a hand up the ramp—a final gesture of camaraderie—Aurelia’s response was a single, calculated shot. It was a clinical removal of an obstacle. She did not check if the beam was fatal; she merely ensured he міг більше не стояти на її шляху.
+                        He had performed his duties flawlessly. As he turned to offer her a hand up the ramp—a final gesture of camaraderie—Aurelia’s response was a single, calculated shot. It was a clinical removal of an obstacle. She did not check if the beam was fatal; she just made sure that he was no longer an obstacle.
                     </p>
                     <div class="monologue m-dominance">
                         Dependency is a debt I refuse to carry. You were efficient, pilot, but a partner is just a liability. I do not kill you for spite; I neutralize you for my own certainty. The audit of this world is complete. I am the only one moving on to the next ledger.
@@ -449,7 +449,7 @@
             </article>
 
             <div class="py-32 text-center">
-                <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">Кінець I Тома</h3>
+                <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">End of Volume I</h3>
                 <button class="mt-8 px-6 py-3 border border-[#c5a059] text-[#c5a059] font-[Cinzel] uppercase tracking-widest hover:bg-[#c5a059] hover:text-black transition-colors" onclick="switchEpisode('episode2')">
                     Перейти до II Тома
                 </button>
@@ -706,7 +706,7 @@ let currentBtn = null;
 function resetButton(btn) {
     if (!btn) return;
     btn.classList.remove('playing');
-    btn.innerHTML = '<span>▶</span> Відтворити вокс-запис';
+    btn.innerHTML = '<span>▶</span> Play vox recording';
 }
 
 document.addEventListener('click', function(e) {
@@ -735,10 +735,10 @@ document.addEventListener('click', function(e) {
     currentBtn = btn;
     
     btn.classList.add('playing');
-    btn.innerHTML = '<span>⏸</span> Трансляція...';
+    btn.innerHTML = '<span>⏸</span> Broadcasting...';
 
     currentAudio.play().catch(err => {
-        console.error("Помилка відтворення аудіо:", err);
+        console.error("Audio playback error:", err);
         resetButton(btn);
     });
 
