@@ -184,6 +184,33 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+    .vox-btn {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--imperium-gold);
+    color: var(--imperium-gold);
+    padding: 6px 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vox-btn:hover {
+    background: rgba(197, 160, 89, 0.15);
+}
+
+.vox-btn.playing {
+    color: var(--las-red);
+    border-color: var(--las-red);
+    background: rgba(255, 0, 0, 0.05);
+}
     </style>
 </head>
 <body>
@@ -215,6 +242,9 @@
                     <div class="monologue m-logic">
                         He is a footnote in the history I am currently writing. His decay is but the fertilizer for my ascent. I ensure the Golden Throne's heavy gears remain oiled with the precision of my audit, for order is my only true religion.
                     </div>
+                    <button class="vox-btn" data-audio="Aurelia_1.mp3">
+            <span>▶</span> Відтворити вокс-запис
+        </button>
                 </div>
             </article>
 
@@ -625,37 +655,97 @@
     </footer>
 
     <script>
-        const observerOptions = { threshold: 0.15 };
-        let observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        function setupObserver() {
-            observer.disconnect();
-            const activeEpisode = document.querySelector('.episode-container.active');
-            if (activeEpisode) {
-                const panels = activeEpisode.querySelectorAll('.panel');
-                panels.forEach(p => {
-                    p.classList.remove('visible'); 
-                    observer.observe(p);
-                });
-            }
+// Відстеження появи панелей (залишаємо для візуального ефекту)
+const observerOptions = { threshold: 0.15 };
+let observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
+    });
+}, observerOptions);
 
-        function switchEpisode(episodeId) {
-            document.querySelectorAll('.episode-container').forEach(ep => {
-                ep.classList.remove('active');
-            });
-            document.getElementById(episodeId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setupObserver();
-        }
+function setupObserver() {
+    observer.disconnect();
+    const activeEpisode = document.querySelector('.episode-container.active');
+    if (activeEpisode) {
+        const panels = activeEpisode.querySelectorAll('.panel');
+        panels.forEach(p => {
+            p.classList.remove('visible'); 
+            observer.observe(p);
+        });
+    }
+}
 
-        document.addEventListener('DOMContentLoaded', setupObserver);
+// Логіка перемикання епізодів
+function switchEpisode(episodeId) {
+    // Зупиняємо аудіо при перемиканні епізоду
+    if (currentAudio) {
+        currentAudio.pause();
+        resetButton(currentBtn);
+    }
+
+    document.querySelectorAll('.episode-container').forEach(ep => {
+        ep.classList.remove('active');
+    });
+    document.getElementById(episodeId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setupObserver();
+}
+
+// ГЛОБАЛЬНА ЛОГІКА АУДІО
+let currentAudio = null;
+let currentBtn = null;
+
+function resetButton(btn) {
+    if (!btn) return;
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span>▶</span> Відтворити вокс-запис';
+}
+
+document.addEventListener('click', function(e) {
+    // Шукаємо, чи клік був по кнопці vox-btn або її дочірньому елементу
+    const btn = e.target.closest('.vox-btn');
+    if (!btn) return;
+
+    const audioSrc = btn.getAttribute('data-audio');
+    if (!audioSrc) return;
+
+    // Якщо натиснули на кнопку, яка зараз грає — зупиняємо її
+    if (currentBtn === btn && currentAudio && !currentAudio.paused) {
+        currentAudio.pause();
+        resetButton(btn);
+        return;
+    }
+
+    // Зупиняємо попередній запис, якщо грав інший
+    if (currentAudio) {
+        currentAudio.pause();
+        resetButton(currentBtn);
+    }
+
+    // Запускаємо новий запис
+    currentAudio = new Audio(audioSrc);
+    currentBtn = btn;
+    
+    btn.classList.add('playing');
+    btn.innerHTML = '<span>⏸</span> Трансляція...';
+
+    currentAudio.play().catch(err => {
+        console.error("Помилка відтворення аудіо:", err);
+        resetButton(btn);
+    });
+
+    // Коли запис закінчується — повертаємо кнопку в початковий стан
+    currentAudio.onended = () => {
+        resetButton(btn);
+        currentAudio = null;
+        currentBtn = null;
+    };
+});
+
+// Запуск при завантаженні
+document.addEventListener('DOMContentLoaded', setupObserver);
     </script>
 </body>
 </html>
