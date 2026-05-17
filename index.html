@@ -59,6 +59,7 @@
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(5px);
+            min-height: 50px;
         }
 
         .nav-link {
@@ -80,20 +81,40 @@
             opacity: 0.4;
             cursor: default;
         }
-        
-        .nav-bot-link {
-            color: var(--las-red);
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            text-decoration: none;
-            border: 1px solid var(--las-red);
-            padding: 4px 10px;
-            transition: all 0.3s ease;
+
+        /* Відцентрований контейнер для шапки */
+        .nav-center-block {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-        
-        .nav-bot-link:hover {
-            background: rgba(255, 0, 0, 0.1);
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+
+        /* Кнопка бота у шапці */
+        .header-bot-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(139, 0, 0, 0.1);
+            border: 1px solid var(--las-red);
+            color: var(--las-red);
+            padding: 6px 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .header-bot-btn:hover {
+            background: var(--las-red);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
 
         .comic-wrapper {
@@ -227,7 +248,7 @@
             background: rgba(255, 0, 0, 0.05);
         }
 
-        /* Кнопка виклику Telegram Бота */
+        /* Кнопка виклику Telegram Бота (Фінальна) */
         .tg-bot-btn {
             display: inline-flex;
             align-items: center;
@@ -260,12 +281,21 @@
     <div id="episode1" class="episode-container active">
         
         <nav class="episode-nav">
-            <span class="nav-link disabled">Volume I: The Shadow Over Aurelia</span>
-            <div class="hidden md:flex items-center gap-6">
-                <span class="text-gray-500 text-xs uppercase tracking-widest">Aurelia von Wald Archives</span>
-                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="nav-bot-link">Initiate Audit</a>
+            <!-- Ліва частина -->
+            <span class="nav-link disabled hidden sm:inline">Volume I: The Shadow Over Aurelia</span>
+            <span class="nav-link disabled sm:hidden">Vol I</span>
+            
+            <!-- Центральна частина з кнопкою бота -->
+            <div class="nav-center-block">
+                <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="header-bot-btn">
+                    Initiate Audit
+                </a>
             </div>
-            <button class="nav-link" onclick="switchEpisode('episode2')">Volume II: Orbital Decay &rarr;</button>
+
+            <!-- Права частина -->
+            <button class="nav-link hidden sm:inline" onclick="switchEpisode('episode2')">Volume II &rarr;</button>
+            <button class="nav-link sm:hidden" onclick="switchEpisode('episode2')">Vol II &rarr;</button>
         </nav>
 
         <section class="intro">
@@ -547,12 +577,21 @@
     <div id="episode2" class="episode-container">
         
         <nav class="episode-nav">
-            <button class="nav-link" onclick="switchEpisode('episode1')">&larr; Volume I: The Shadow Over Aurelia</button>
-            <div class="hidden md:flex items-center gap-6">
-                <span class="text-gray-500 text-xs uppercase tracking-widest">Aurelia von Wald Archives</span>
-                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="nav-bot-link">Initiate Audit</a>
+            <!-- Ліва частина -->
+            <button class="nav-link hidden sm:inline" onclick="switchEpisode('episode1')">&larr; Volume I</button>
+            <button class="nav-link sm:hidden" onclick="switchEpisode('episode1')">&larr; Vol I</button>
+            
+            <!-- Центральна частина з кнопкою бота -->
+            <div class="nav-center-block">
+                <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="header-bot-btn">
+                    Initiate Audit
+                </a>
             </div>
-            <span class="nav-link disabled">Volume III (Sealed)</span>
+
+            <!-- Права частина -->
+            <span class="nav-link disabled hidden sm:inline">Volume III (Sealed)</span>
+            <span class="nav-link disabled sm:hidden">Vol III</span>
         </nav>
 
         <section class="intro">
@@ -729,6 +768,7 @@
                 <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">Audit completed</h3>
                 <p class="text-gray-500 mt-6 italic font-[EB Garamond]">Volume II is complete.</p>
 
+                <!-- НОВИЙ БЛОК: Кнопка виклику Telegram-бота -->
                 <div class="mt-16 flex flex-col items-center gap-6">
                     <p class="text-[#c5a059] font-[Cinzel] text-sm uppercase tracking-widest border-b border-[#c5a059] pb-2">Dare to face the Questor?</p>
                     <a href="https://t.me/Aurelia_40k_bot" target="_blank" rel="noopener noreferrer" class="tg-bot-btn">
