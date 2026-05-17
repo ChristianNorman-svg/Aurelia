@@ -80,6 +80,21 @@
             opacity: 0.4;
             cursor: default;
         }
+        
+        .nav-bot-link {
+            color: var(--las-red);
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            text-decoration: none;
+            border: 1px solid var(--las-red);
+            padding: 4px 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-bot-link:hover {
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
 
         .comic-wrapper {
             max-width: 850px;
@@ -185,32 +200,59 @@
             to { opacity: 1; }
         }
 
-    .vox-btn {
-    margin-top: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: 1px solid var(--imperium-gold);
-    color: var(--imperium-gold);
-    padding: 6px 12px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .vox-btn {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--imperium-gold);
+            color: var(--imperium-gold);
+            padding: 6px 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.vox-btn:hover {
-    background: rgba(197, 160, 89, 0.15);
-}
+        .vox-btn:hover {
+            background: rgba(197, 160, 89, 0.15);
+        }
 
-.vox-btn.playing {
-    color: var(--las-red);
-    border-color: var(--las-red);
-    background: rgba(255, 0, 0, 0.05);
-}
+        .vox-btn.playing {
+            color: var(--las-red);
+            border-color: var(--las-red);
+            background: rgba(255, 0, 0, 0.05);
+        }
+
+        /* Кнопка виклику Telegram Бота */
+        .tg-bot-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #161616 0%, #050505 100%);
+            border: 1px solid var(--imperium-gold);
+            color: var(--imperium-gold);
+            padding: 16px 32px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
+        }
+
+        .tg-bot-btn:hover {
+            background: rgba(197, 160, 89, 0.05);
+            color: var(--las-red);
+            border-color: var(--las-red);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -219,7 +261,10 @@
         
         <nav class="episode-nav">
             <span class="nav-link disabled">Volume I: The Shadow Over Aurelia</span>
-            <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+            <div class="hidden md:flex items-center gap-6">
+                <span class="text-gray-500 text-xs uppercase tracking-widest">Aurelia von Wald Archives</span>
+                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="nav-bot-link">Initiate Audit</a>
+            </div>
             <button class="nav-link" onclick="switchEpisode('episode2')">Volume II: Orbital Decay &rarr;</button>
         </nav>
 
@@ -243,8 +288,8 @@
                         He is a footnote in the history I am currently writing. His decay is but the fertilizer for my ascent. I ensure the Golden Throne's heavy gears remain oiled with the precision of my audit, for order is my only true religion.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_2.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -257,9 +302,9 @@
                     <div class="monologue m-dominance">
                         Authority is a performance; without the grand costume of power, the audience eventually forgets their lines. These soldiers are my stagehands—necessary shadows meant to accentuate my silhouette.
                     </div>
-                        <button class="vox-btn" data-audio="Aurelia_3.mp3">
-            <span>▶</span> Play vox
-        </button>
+                    <button class="vox-btn" data-audio="Aurelia_3.mp3">
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -272,9 +317,9 @@
                     <div class="monologue m-manipulation">
                         Look closely, little creature. I am the divinity you pray to in the dark. This smile is a trivial expenditure, yet it buys another week of silence in the gutters. In this filth, I am the only petal that remains unbruised.
                     </div>
-                        <button class="vox-btn" data-audio="Aurelia_4.mp3">
-            <span>▶</span> Play vox
-        </button>
+                    <button class="vox-btn" data-audio="Aurelia_4.mp3">
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -288,8 +333,8 @@
                         Kastiel... his rigidity is as predictable as the planetary rotation, yet there is a certain aesthetic pleasure in bending it. A delightful evening is ahead, and if it ends with the codes I require, then the audit of my time will be perfectly balanced.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_5.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -305,8 +350,8 @@
                         He believes in the nobility of our partnership. How charming. In truth, I only require the keys to the orbital platforms. His heart is a lock, and I have always been an expert locksmith.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_6.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -320,8 +365,8 @@
                         Individual lives are but ink on a ledger. If ten thousand must fall to secure a single supply line, it is a balanced account. Mathematics does not possess the capacity for grief, and neither do I.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_7.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -335,8 +380,8 @@
                         The accounts are settled. The stars remain silent observers to my victory. I assumed this harmony was my birthright... a rare error in my calculations.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_8.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -350,8 +395,8 @@
                         I tracked the insurgency through the beauty of the numbers. I saw the hollow souls in the ledgers long before the first cultist drew a blade. Now, the math has come alive to haunt me.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_9.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -365,8 +410,8 @@
                         This xenos filth seeks to liquidate the Administratum’s assets. I am the highest asset on this world, and I will not be consumed by a mindless swarm. My will is the only thing they cannot digest.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_10.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -380,8 +425,8 @@
                         His final duty to the Throne is to serve as a biological diversion. His screams are a tactical asset, granting me the seconds I need. His end is a masterpiece of utility. Farewell, dear prefect.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_11.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -395,8 +440,8 @@
                         They seek an unauthorized alteration of my genes. I would rather shatter on the ferrocrete below than become a vessel for their brood. A von Wald chooses her own end.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_12.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -410,8 +455,8 @@
                         Sentiment is a defect I cannot afford. Prefect’s death was merely the fulfillment of his contract. I remain the only relevant variable in this equation. I will find a way out.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_13.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -425,8 +470,8 @@
                         You dare attempt to harvest a von Wald? Taste the sting of a rose that refuses to wither. I claim your life to buy my own!
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_14.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -440,8 +485,8 @@
                         The planet’s accounts are closed. I am the sole survivor of the wreckage. My journey among the stars has only just begun. I have shed the girl, and the Questor remains—sharpened and absolute.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_15.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -455,8 +500,8 @@
                         This planet no longer belongs to the Imperium. But I will not be their supper. My roots are iron, my petals are blades. The hangars lie ahead. Ahead lies my exit.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_16.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -470,8 +515,8 @@
                         Hope is a powerful sedative. I will let him believe in our shared escape just long enough to unlock the cogitator spirits. I need him focused on the machine, not on me. His hands are skilled, but mine must be the ones on the controls.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_17.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -485,8 +530,8 @@
                         Dependency is a debt I refuse to carry. You were efficient, pilot, but a partner is just a liability. I do not kill you for spite; I neutralize you for my own certainty. The audit of this world is complete. I am the only one moving on to the next ledger.
                     </div>
                     <button class="vox-btn" data-audio="Aurelia_18.mp3">
-            <span>▶</span> Play vox
-        </button>
+                        <span>▶</span> Play vox
+                    </button>
                 </div>
             </article>
 
@@ -503,7 +548,10 @@
         
         <nav class="episode-nav">
             <button class="nav-link" onclick="switchEpisode('episode1')">&larr; Volume I: The Shadow Over Aurelia</button>
-            <span class="text-gray-500 text-xs uppercase tracking-widest hidden md:inline">Aurelia von Wald Archives</span>
+            <div class="hidden md:flex items-center gap-6">
+                <span class="text-gray-500 text-xs uppercase tracking-widest">Aurelia von Wald Archives</span>
+                <a href="https://t.me/Aurelia_40k_bot" target="_blank" class="nav-bot-link">Initiate Audit</a>
+            </div>
             <span class="nav-link disabled">Volume III (Sealed)</span>
         </nav>
 
@@ -680,7 +728,15 @@
             <div class="py-32 text-center">
                 <h3 class="text-4xl font-[Cinzel] text-[#c5a059]">Audit completed</h3>
                 <p class="text-gray-500 mt-6 italic font-[EB Garamond]">Volume II is complete.</p>
-                <button class="mt-8 px-6 py-3 border border-gray-600 text-gray-500 font-[Cinzel] uppercase tracking-widest hover:border-[#c5a059] hover:text-[#c5a059] transition-colors" onclick="switchEpisode('episode1')">
+
+                <div class="mt-16 flex flex-col items-center gap-6">
+                    <p class="text-[#c5a059] font-[Cinzel] text-sm uppercase tracking-widest border-b border-[#c5a059] pb-2">Dare to face the Questor?</p>
+                    <a href="https://t.me/Aurelia_40k_bot" target="_blank" rel="noopener noreferrer" class="tg-bot-btn">
+                        Submit to Audit in Telegram
+                    </a>
+                </div>
+
+                <button class="mt-16 px-6 py-3 border border-gray-600 text-gray-500 font-[Cinzel] uppercase tracking-widest hover:border-[#c5a059] hover:text-[#c5a059] transition-colors" onclick="switchEpisode('episode1')">
                     Return to Volume I
                 </button>
             </div>
@@ -703,97 +759,87 @@
     </footer>
 
     <script>
-// Відстеження появи панелей (залишаємо для візуального ефекту)
-const observerOptions = { threshold: 0.15 };
-let observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+        const observerOptions = { threshold: 0.15 };
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        function setupObserver() {
+            observer.disconnect();
+            const activeEpisode = document.querySelector('.episode-container.active');
+            if (activeEpisode) {
+                const panels = activeEpisode.querySelectorAll('.panel');
+                panels.forEach(p => {
+                    p.classList.remove('visible'); 
+                    observer.observe(p);
+                });
+            }
         }
-    });
-}, observerOptions);
 
-function setupObserver() {
-    observer.disconnect();
-    const activeEpisode = document.querySelector('.episode-container.active');
-    if (activeEpisode) {
-        const panels = activeEpisode.querySelectorAll('.panel');
-        panels.forEach(p => {
-            p.classList.remove('visible'); 
-            observer.observe(p);
+        function switchEpisode(episodeId) {
+            if (currentAudio) {
+                currentAudio.pause();
+                resetButton(currentBtn);
+            }
+
+            document.querySelectorAll('.episode-container').forEach(ep => {
+                ep.classList.remove('active');
+            });
+            document.getElementById(episodeId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setupObserver();
+        }
+
+        let currentAudio = null;
+        let currentBtn = null;
+
+        function resetButton(btn) {
+            if (!btn) return;
+            btn.classList.remove('playing');
+            btn.innerHTML = '<span>▶</span> Play vox recording';
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.vox-btn');
+            if (!btn) return;
+
+            const audioSrc = btn.getAttribute('data-audio');
+            if (!audioSrc) return;
+
+            if (currentBtn === btn && currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                resetButton(btn);
+                return;
+            }
+
+            if (currentAudio) {
+                currentAudio.pause();
+                resetButton(currentBtn);
+            }
+
+            currentAudio = new Audio(audioSrc);
+            currentBtn = btn;
+            
+            btn.classList.add('playing');
+            btn.innerHTML = '<span>⏸</span> Broadcasting...';
+
+            currentAudio.play().catch(err => {
+                console.error("Audio playback error:", err);
+                resetButton(btn);
+            });
+
+            currentAudio.onended = () => {
+                resetButton(btn);
+                currentAudio = null;
+                currentBtn = null;
+            };
         });
-    }
-}
 
-// Логіка перемикання епізодів
-function switchEpisode(episodeId) {
-    // Зупиняємо аудіо при перемиканні епізоду
-    if (currentAudio) {
-        currentAudio.pause();
-        resetButton(currentBtn);
-    }
-
-    document.querySelectorAll('.episode-container').forEach(ep => {
-        ep.classList.remove('active');
-    });
-    document.getElementById(episodeId).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setupObserver();
-}
-
-// ГЛОБАЛЬНА ЛОГІКА АУДІО
-let currentAudio = null;
-let currentBtn = null;
-
-function resetButton(btn) {
-    if (!btn) return;
-    btn.classList.remove('playing');
-    btn.innerHTML = '<span>▶</span> Play vox recording';
-}
-
-document.addEventListener('click', function(e) {
-    // Шукаємо, чи клік був по кнопці vox-btn або її дочірньому елементу
-    const btn = e.target.closest('.vox-btn');
-    if (!btn) return;
-
-    const audioSrc = btn.getAttribute('data-audio');
-    if (!audioSrc) return;
-
-    // Якщо натиснули на кнопку, яка зараз грає — зупиняємо її
-    if (currentBtn === btn && currentAudio && !currentAudio.paused) {
-        currentAudio.pause();
-        resetButton(btn);
-        return;
-    }
-
-    // Зупиняємо попередній запис, якщо грав інший
-    if (currentAudio) {
-        currentAudio.pause();
-        resetButton(currentBtn);
-    }
-
-    // Запускаємо новий запис
-    currentAudio = new Audio(audioSrc);
-    currentBtn = btn;
-    
-    btn.classList.add('playing');
-    btn.innerHTML = '<span>⏸</span> Broadcasting...';
-
-    currentAudio.play().catch(err => {
-        console.error("Audio playback error:", err);
-        resetButton(btn);
-    });
-
-    // Коли запис закінчується — повертаємо кнопку в початковий стан
-    currentAudio.onended = () => {
-        resetButton(btn);
-        currentAudio = null;
-        currentBtn = null;
-    };
-});
-
-// Запуск при завантаженні
-document.addEventListener('DOMContentLoaded', setupObserver);
+        document.addEventListener('DOMContentLoaded', setupObserver);
     </script>
 </body>
 </html>
